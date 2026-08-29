@@ -1,5 +1,5 @@
 {
-  "name": "Reservine — release production branch",
+  "name": "ReservineBack — dev development branch",
   "target": "branch",
   "source_type": "Organization",
   "enforcement": "active",
@@ -12,18 +12,18 @@
   ],
   "conditions": {
     "repository_name": {
-      "include": ["Reservine"],
+      "include": ["ReservineBack"],
       "exclude": [],
       "protected": true
     },
     "ref_name": {
-      "include": ["refs/heads/release"],
+      "include": ["refs/heads/dev"],
       "exclude": []
     }
   },
   "rules": [
-    { "type": "deletion" },
-    { "type": "non_fast_forward" },
+    {"type": "deletion"},
+    {"type": "non_fast_forward"},
     {
       "type": "pull_request",
       "parameters": {
@@ -33,19 +33,6 @@
         "dismiss_stale_reviews_on_push": false,
         "required_approving_review_count": 0,
         "required_review_thread_resolution": true
-      }
-    },
-    {
-      "type": "required_status_checks",
-      "parameters": {
-        "do_not_enforce_on_create": true,
-        "required_status_checks": [
-          {
-            "context": "Cross-repo PR dependencies",
-            "integration_id": 15368
-          }
-        ],
-        "strict_required_status_checks_policy": false
       }
     }
   ]
