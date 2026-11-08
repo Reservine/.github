@@ -31,6 +31,21 @@ access. Owners cannot bypass the pull-request path with a direct push. An
 emergency direct push requires explicitly changing the organization ruleset,
 leaving an auditable settings change.
 
+## Merge methods
+
+These four branches allow merge commits only (since 2026-11-08). PRs into them
+are mostly branch-to-branch syncs (`devlp → main`, `release → main`), and a
+squash there cuts the target's ancestry with its source.
+
+The repository-level `devlp` and `canary` rulesets in both application
+repositories are not kept here. `devlp` allows squash only: a feature PR lands
+as one commit, `<PR title> (#N)`, carrying the PR description. `canary` (Slovak
+production) allows merge commits only, because promotions must keep devlp's
+ancestry (Reservine/Reservine `deploy/README.md` "canary"). Both repositories
+keep the merge and squash buttons on, so these rulesets pick the method for
+each base branch. The other Reservine repositories are squash-only, held by
+henderson-tech/vybava `policies/reservine.yaml`.
+
 ## Eve review policy
 
 The installed GitHub App is `eve-bot-lovinka` (`eve-bot-lovinka[bot]` when it
